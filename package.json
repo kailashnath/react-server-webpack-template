@@ -4,14 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon --ignore node_modules run.js",
-    "client": "webpack --config webpack.config.js --watch",
-    "buildUI": "webpack --config webpack.prod.config.js -p",
+    "server": "nodemon --ignore node_modules --ignore dist server/run.js",
+    "client": "webpack --config etc/webpack.config.js --watch",
+    "buildUI": "webpack --config etc/webpack.prod.config.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assets-webpack-plugin": "^3.5.0",
     "babel-register": "^6.18.0",
     "css-modules-require-hook": "^4.0.5",
     "lodash": "^4.17.4",

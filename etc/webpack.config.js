@@ -12,12 +12,12 @@ var cssConf = require('./cmrh.conf.js');
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
-    app: [path.join(__dirname, 'app/main.js')],
+    app: [path.join(__dirname, '../shared/main.js')],
     vendor: ['moment', 'classnames', 'react-redux', 'react', 'lodash',
             'redux', 'react-addons-shallow-compare', 'react-router-redux', 'react-router']
   },
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '../dist/'),
     filename: '[name].js',
     publicPath: './'
   },
@@ -25,7 +25,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: path.join(__dirname, '../shared/index.html'),
       inject: 'body',
       filename: 'index.html'
     }),

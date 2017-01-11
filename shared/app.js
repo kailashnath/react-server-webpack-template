@@ -7,7 +7,8 @@ import classNames from 'classnames';
 export default () => {
     return (
         <div className={classNames(styles.red, borders.black)}>
-            <img className={images.icon} />Hello from App :-)
+            <img className={images.icon} />
+            Hello from App :-)
         </div>
     );
 };
