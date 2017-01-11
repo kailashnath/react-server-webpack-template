@@ -36,6 +36,8 @@ Server.get('/', (req, res) => {
     });
 });
 
+Server.use('/dist', Express.static('dist'));
+
 Server.listen(port, () => {
     console.log('Server listening on port: ' + port);
 });
