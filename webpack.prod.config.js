@@ -10,7 +10,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var cssConf = require('./cmrh.conf.js');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
     app: [path.join(__dirname, 'app/main.js')],
     vendor: ['moment', 'classnames', 'react-redux', 'react', 'lodash',
@@ -33,7 +33,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
     new ExtractTextPlugin('styles.css', {allChunks: true})
@@ -48,10 +48,11 @@ module.exports = {
       }
     }, { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff" },
-       { test: /\.(jpe?g|gif|png|svg|ttf|eot|ico|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: "file-loader" },
+       { test: /\.(jpe?g|gif|png|svg|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: "file-loader" },
     {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', ['css-loader?localIdentName=' + cssConf.generateScopedName, 'postcss-loader', 'sass-loader'])
+        //loaders: ExtractTextPlugin.extract('style', 'style-loader!css-loader?localIdentName=[name]--[local]--[hash:base64:5]!postcss-loader!sass-loader')
     }, {
       test: /\.json?$/,
       loader: 'json'
@@ -72,4 +73,4 @@ module.exports = {
           moment: 'moment/moment.js'
       }
   }
-};
+}

@@ -10,7 +10,15 @@ const Server = new Express();
 const port = 9999;
 const homeHtml = new Promise((ok, fail) => {
     fs.readFile('./app/index.html', 'utf8', (err, data) => {
-        (err === null)? ok(cheerio.load(data)): fail(err);
+        if (null === err) {
+            const page = cheerio.load(data);
+            page('head').append(`<link href="./dist/styles.css" rel="stylesheet">`);
+            page('body').append(`<script type="text/javascript" src="./dist/vendor.bundle.js" />`);
+            page('body').append(`<script type="text/javascript" src="./dist/app.js" />`);
+            ok(page);
+        } else {
+            fail(err);
+        }
     });
 });
 
@@ -27,7 +35,6 @@ Server.get('/', (req, res) => {
         res.send(err);
     });
 });
-
 
 Server.listen(port, () => {
     console.log('Server listening on port: ' + port);
