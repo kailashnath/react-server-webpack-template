@@ -1,16 +1,22 @@
 {
-  "name": "ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "react-server-webpack-template",
+  "version": "0.1.0",
+  "description": "Template for building isomorphic applications using ReactJs and Webpack",
   "scripts": {
     "server": "nodemon --ignore node_modules --ignore dist server/run.js",
     "client": "webpack --config etc/webpack.config.js --watch",
     "buildUI": "webpack --config etc/webpack.prod.config.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+      "name": "Kailash K",
+      "email": "retadedgeek@gmail.com"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/kailashnath/react-server-webpack-template"
+  },
+  "license": "MIT",
   "dependencies": {
     "assets-webpack-plugin": "^3.5.0",
     "babel-register": "^6.18.0",
